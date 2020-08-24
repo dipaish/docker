@@ -13118,7 +13118,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Setting-up-Local-WordPress-Development-using---Docker-Compose">Setting up Local WordPress Development using - Docker Compose<a class="anchor-link" href="#Setting-up-Local-WordPress-Development-using---Docker-Compose">&#182;</a></h1><p>We will use a tool called Docker Compose that enables running multi-container docker applications. You will use a YAML file to configure your application's services.</p>
-<p>Using compose consists of 2 steps:</p>
+<p>Using compose consists of 3 steps:</p>
 <ol>
 <li>Ceate a docker-compose.yml file that defines all services that make up your app and provides an isolated environment where they can run together</li>
 <li>Run docker-compose up to starting and running your app.</li>
@@ -13221,7 +13221,7 @@ div#notebook {
 <span class="n">services</span><span class="p">:</span>
   <span class="c1"># Database</span>
   <span class="n">db</span><span class="p">:</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">deepakkc</span><span class="o">/</span><span class="n">wp1</span><span class="p">:</span><span class="n">dbu</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
     <span class="n">volumes</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">db_data</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span>
     <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
@@ -13236,7 +13236,7 @@ div#notebook {
   <span class="n">phpmyadmin</span><span class="p">:</span>
     <span class="n">depends_on</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">db</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">deepakkc</span><span class="o">/</span><span class="n">wp1</span><span class="p">:</span><span class="n">phpmyadmin</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">phpmyadmin</span><span class="o">/</span><span class="n">phpmyadmin</span>
     <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
     <span class="n">ports</span><span class="p">:</span>
       <span class="o">-</span> <span class="s1">&#39;8080:80&#39;</span>
@@ -13249,7 +13249,7 @@ div#notebook {
   <span class="n">wordpress</span><span class="p">:</span>
     <span class="n">depends_on</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">db</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">deepakkc</span><span class="o">/</span><span class="n">wp1</span><span class="p">:</span><span class="n">wp24</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">wordpress</span><span class="p">:</span><span class="n">latest</span>
     <span class="n">ports</span><span class="p">:</span>
       <span class="o">-</span> <span class="s1">&#39;8000:80&#39;</span>
     <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
