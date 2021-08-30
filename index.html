@@ -13216,56 +13216,38 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span>
-
-<span class="n">services</span><span class="p">:</span>
-  <span class="c1"># Database</span>
-  <span class="n">db</span><span class="p">:</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
-    <span class="n">volumes</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">db_data</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span>
-    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
-    <span class="n">environment</span><span class="p">:</span>
-      <span class="n">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="n">password</span>
-      <span class="n">MYSQL_DATABASE</span><span class="p">:</span> <span class="n">wordpress</span>
-      <span class="n">MYSQL_USER</span><span class="p">:</span> <span class="n">wordpress</span>
-      <span class="n">MYSQL_PASSWORD</span><span class="p">:</span> <span class="n">wordpress</span>
-    <span class="n">networks</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">wpsite</span>
-  <span class="c1"># phpmyadmin</span>
-  <span class="n">phpmyadmin</span><span class="p">:</span>
-    <span class="n">depends_on</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">db</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">phpmyadmin</span><span class="o">/</span><span class="n">phpmyadmin</span>
-    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
-    <span class="n">ports</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s1">&#39;8080:80&#39;</span>
-    <span class="n">environment</span><span class="p">:</span>
-      <span class="n">PMA_HOST</span><span class="p">:</span> <span class="n">db</span>
-      <span class="n">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="n">password</span> 
-    <span class="n">networks</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">wpsite</span>
-  <span class="c1"># Wordpress</span>
-  <span class="n">wordpress</span><span class="p">:</span>
-    <span class="n">depends_on</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">db</span>
-    <span class="n">image</span><span class="p">:</span> <span class="n">wordpress</span><span class="p">:</span><span class="n">latest</span>
-    <span class="n">ports</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s1">&#39;8000:80&#39;</span>
-    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
-    <span class="n">volumes</span><span class="p">:</span> 
-     <span class="o">-</span> <span class="n">wpd</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
-    <span class="n">environment</span><span class="p">:</span>
-      <span class="n">WORDPRESS_DB_HOST</span><span class="p">:</span> <span class="n">db</span><span class="p">:</span><span class="mi">3306</span>
-      <span class="n">WORDPRESS_DB_USER</span><span class="p">:</span> <span class="n">wordpress</span>
-      <span class="n">WORDPRESS_DB_PASSWORD</span><span class="p">:</span> <span class="n">wordpress</span>
-    <span class="n">networks</span><span class="p">:</span>
-      <span class="o">-</span> <span class="n">wpsite</span>
-<span class="n">networks</span><span class="p">:</span>
-  <span class="n">wpsite</span><span class="p">:</span>
-<span class="n">volumes</span><span class="p">:</span>
-  <span class="n">db_data</span><span class="p">:</span>
-  <span class="n">wpd</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span>
+  version: "3.9"
+    
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8001:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  db_data: {}
+  wordpress_data: {}
 </pre></div>
 
     </div>
