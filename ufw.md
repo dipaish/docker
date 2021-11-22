@@ -20,6 +20,12 @@ _**UFW status**_
     sudo ufw status
     sudo ufw status verbose
     
+   _**Listing Rules in Number Sequence**_
+   To list rules in number sequence makes it easier to manage rules.
+
+    sudo ufw status numbered 
+   
+    
   _**Enabling UFW**_  
       
       sudo ufw enable
