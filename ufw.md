@@ -28,12 +28,15 @@ _**UFW status**_
     
     sudo ufw disable
     
- _**Listing Rules in Number Sequence:**_
+ _**Listing Rules in Number Sequence**_
    
    Listing rules in number sequence makes it easier to manage rules.
 
     sudo ufw status numbered 
   
+   _**UFW Default Policy**_
+   
+   The default UFW policy denies all incoming connections and allows outubound connections. By default, your system has access to the outside network however your system block all incoming connections unless you allow IP addresses, ranges or ports of combinations of all.
 
 _**UFW command syntax**_
 
