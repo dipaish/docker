@@ -36,7 +36,7 @@ _**UFW status**_
   
    _**UFW Default Policy**_
    
-   The default UFW policy denies all incoming connections and allows outubound connections. By default, your system has access to the outside network however your system block all incoming connections unless you allow IP addresses, ranges or ports of combinations of all.
+   The default UFW policy denies all incoming connections and allows outubound connections. By default, your system has access to the outside network however your system block all incoming connections unless you allow IP addresses, ranges or ports or combinations of all.
 
 _**UFW command syntax**_
 
