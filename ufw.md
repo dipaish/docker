@@ -21,9 +21,11 @@ _**UFW status**_
     sudo ufw status verbose
     
   _**Enabling UFW**_  
+      
       sudo ufw enable
     
   _**Disabling UFW**_  
+    
     sudo ufw disable
 
 _**UFW command syntax**_
