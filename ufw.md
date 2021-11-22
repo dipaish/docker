@@ -17,8 +17,14 @@ _**UFW install**_
 
 _**UFW status**_
 
+    sudo ufw status
     sudo ufw status verbose
-    sudo ufw disable / sudo ufw enable
+    
+  _** Enabling UFW **_  
+      sudo ufw enable
+    
+  _** Disabling UFW **_  
+    sudo ufw disable
 
 _**UFW command syntax**_
 
