@@ -22,7 +22,7 @@ _**UFW status**_
     
    _**Listing Rules in Number Sequence:**_
    
-   To list rules in number sequence makes it easier to manage rules.
+    Listing rules in number sequence makes it easier to manage rules.
 
     sudo ufw status numbered 
    
